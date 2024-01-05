@@ -21,18 +21,22 @@ Welcome to the Rick and Morty app! This mobile application is crafted with [Flut
 To run the app locally, follow these steps:
 
 1. Clone this repository.
-   ```
+   ```bash
    git clone https://github.com/your-username/rick-and-morty-app.git
+   ``````
 
 2. Navigate to the project directory.
-    ```
+    ```bash
     cd rick-and-morty-app
+    ```
 
 3. Install dependencies.
-    ```
+    ```bash
     flutter pub get
+    ``````
 
 4. Run the app.
-    ```
+    ```bash
     flutter run
+    ``````
 
