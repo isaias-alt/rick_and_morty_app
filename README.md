@@ -2,11 +2,11 @@
 
 Welcome to the Rick and Morty app! This mobile application is crafted with [Flutter](https://flutter.dev/) and powered by the [Rick and Morty API](https://rickandmortyapi.com/).
 
-## Download the App
+<> ## Download the App
 
-[Download on the App Store](link_to_app_store)
+<> [Download on the App Store](link_to_app_store)
 
-[Get it on Google Play](link_to_play_store)
+<> [Get it on Google Play](link_to_play_store)
 
 ## Features
 
