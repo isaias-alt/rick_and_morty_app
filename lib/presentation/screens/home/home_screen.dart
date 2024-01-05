@@ -148,7 +148,7 @@ class _CharacterView extends StatelessWidget {
           );
         } else {
           return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(vertical: 15),
               child: Center(
                   child: CircularProgressIndicator(color: Color(0xFF22D8F0))));
         }
