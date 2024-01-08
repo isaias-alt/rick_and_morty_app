@@ -14,18 +14,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => ApiProvider(),
+        ChangeNotifierProvider<ApiProvider>(
+          create: (_) => ApiProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => ThemeProvider(),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(),
         )
       ],
-      child: MaterialApp.router(
-        title: 'Material App',
-        routerConfig: appRouter,
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme().getTheme(),
+      child: const _BuildMaterialApp(),
+    );
+  }
+}
+
+class _BuildMaterialApp extends StatelessWidget {
+  const _BuildMaterialApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      title: 'Rick and Morty App',
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme().getTheme(
+        themeProvider: context.watch<ThemeProvider>(),
       ),
     );
   }

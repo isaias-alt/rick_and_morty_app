@@ -1,8 +1,3 @@
-import 'dart:convert';
-
-CharacterModel characterModelFromJson(String str) =>
-    CharacterModel.fromJson(json.decode(str));
-
 class CharacterModel {
   Info? info;
   List<Character>? results;

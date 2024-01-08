@@ -38,26 +38,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final apiProvider = context.watch<ApiProvider>();
     final themeProvider = context.watch<ThemeProvider>();
-
-    const TextStyle appBarTextStyle = TextStyle(
-        fontFamily: 'Schwifty',
-        fontWeight: FontWeight.w800,
-        color: Color(0xFF22D8F0),
-        shadows: [
-          Shadow(color: Color(0xFF8EFF4D), offset: Offset(0, 0), blurRadius: 5)
-        ]);
+    final appBarTextStyle = Theme.of(context).appBarTheme.titleTextStyle;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Rick and Morty App', style: appBarTextStyle),
+        title: Text('Rick and Morty App', style: appBarTextStyle),
         actions: [
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: IconButton(
                 onPressed: () {
-                  setState(() {
-                    themeProvider.isDarkMode = !themeProvider.isDarkMode;
-                  });
+                  themeProvider.isDarkMode = !themeProvider.isDarkMode;
                 },
                 icon: Icon(
                   themeProvider.isDarkMode
