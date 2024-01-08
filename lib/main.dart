@@ -31,12 +31,13 @@ class _BuildMaterialApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
     return MaterialApp.router(
       title: 'Rick and Morty App',
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       theme: AppTheme().getTheme(
-        themeProvider: context.watch<ThemeProvider>(),
+        themeProvider: themeProvider,
       ),
     );
   }
