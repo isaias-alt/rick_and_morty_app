@@ -10,7 +10,7 @@ class AppTheme {
           titleTextStyle: TextStyle(
             fontFamily: 'Schwifty',
             fontWeight: FontWeight.w800,
-            fontSize: 25,
+            fontSize: 30,
             color: Color(0xFF22D8F0),
             shadows: [
               Shadow(
