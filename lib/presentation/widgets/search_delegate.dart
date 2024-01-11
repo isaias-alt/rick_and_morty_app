@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:rick_and_morty_app/core/models/character_model.dart';
+import 'package:rick_and_morty_app/infrastructure/models/character_model.dart';
 import 'package:rick_and_morty_app/presentation/providers/api_provider.dart';
 
 class SearchCharacter extends SearchDelegate {

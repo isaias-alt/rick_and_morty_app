@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/core/models/character_model.dart';
+import 'package:rick_and_morty_app/infrastructure/models/character_model.dart';
 
 class CharacterScreen extends StatelessWidget {
   final Character character;
