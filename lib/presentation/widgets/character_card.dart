@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rick_and_morty_app/presentation/providers/api_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/providers.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard({
     super.key,
     required this.scrollController,
     required this.isLoading,
-    required this.apiProvider,
+    required this.characterProvider,
   });
 
   final ScrollController scrollController;
   final bool isLoading;
-  final ApiProvider apiProvider;
+  final CharacterProvider characterProvider;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: scrollController,
       itemCount: isLoading
-          ? apiProvider.characters.length + 1
-          : apiProvider.characters.length,
+          ? characterProvider.characters.length + 1
+          : characterProvider.characters.length,
       itemBuilder: (context, index) {
-        if (index < apiProvider.characters.length) {
-          final character = apiProvider.characters[index];
+        if (index < characterProvider.characters.length) {
+          final character = characterProvider.characters[index];
           return InkWell(
             onTap: () => context.go('/character', extra: character),
             child: Card(

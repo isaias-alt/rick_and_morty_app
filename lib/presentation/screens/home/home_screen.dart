@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rick_and_morty_app/presentation/providers/api_provider.dart';
-import 'package:rick_and_morty_app/presentation/providers/theme_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/character/character_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/theme/theme_provider.dart';
 import 'package:rick_and_morty_app/presentation/widgets/character_card.dart';
 import 'package:rick_and_morty_app/presentation/widgets/search_delegate.dart';
 
@@ -19,15 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final apiProvider = context.read<ApiProvider>();
-    apiProvider.getCharacters(page);
+    final characterProvider = context.read<CharacterProvider>();
+    characterProvider.getCharacters(page);
     scrollController.addListener(() async {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
         isLoading = true;
         setState(() {});
         page++;
-        await apiProvider.getCharacters(page);
+        await characterProvider.getCharacters(page);
         setState(() {});
         isLoading = false;
       }
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final apiProvider = context.watch<ApiProvider>();
+    final characterProvider = context.watch<CharacterProvider>();
     final themeProvider = context.watch<ThemeProvider>();
     final appBarTextStyle = Theme.of(context).appBarTheme.titleTextStyle;
 
@@ -59,14 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SizedBox(
-          child: apiProvider.characters.isEmpty
+          child: characterProvider.characters.isEmpty
               ? const Center(
                   child: CircularProgressIndicator(
                     color: Color(0xFF22D8F0),
                   ),
                 )
               : _CharacterView(
-                  apiProvider: apiProvider,
+                  characterProvider: characterProvider,
                   scrollController: scrollController,
                   isLoading: isLoading,
                 )),
@@ -80,20 +80,21 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _CharacterView extends StatelessWidget {
-  final ApiProvider apiProvider;
+  final CharacterProvider characterProvider;
   final ScrollController scrollController;
   final bool isLoading;
-  const _CharacterView(
-      {required this.apiProvider,
-      required this.scrollController,
-      required this.isLoading});
+  const _CharacterView({
+    required this.characterProvider,
+    required this.scrollController,
+    required this.isLoading,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CharacterCard(
       scrollController: scrollController,
       isLoading: isLoading,
-      apiProvider: apiProvider,
+      characterProvider: characterProvider,
     );
   }
 }

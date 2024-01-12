@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty_app/config/routes/app_routes.dart';
 import 'package:rick_and_morty_app/config/themes/app_theme.dart';
-import 'package:rick_and_morty_app/presentation/providers/api_provider.dart';
-import 'package:rick_and_morty_app/presentation/providers/theme_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/character/character_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/theme/theme_provider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ApiProvider>(
-          create: (_) => ApiProvider(),
+        ChangeNotifierProvider<CharacterProvider>(
+          create: (_) => CharacterProvider(),
         ),
         ChangeNotifierProvider<ThemeProvider>(
           create: (_) => ThemeProvider(),

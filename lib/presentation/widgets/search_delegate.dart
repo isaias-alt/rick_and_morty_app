@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:rick_and_morty_app/infrastructure/models/character_model.dart';
-import 'package:rick_and_morty_app/presentation/providers/api_provider.dart';
+import 'package:rick_and_morty_app/domain/entities/character.dart';
+import 'package:rick_and_morty_app/presentation/providers/character/character_provider.dart';
 
 class SearchCharacter extends SearchDelegate {
   @override
@@ -32,7 +32,7 @@ class SearchCharacter extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final characterProvider = context.watch<ApiProvider>();
+    final characterProvider = context.watch<CharacterProvider>();
     if (query.isEmpty) {
       return const Center(
         child: CircularProgressIndicator(color: Color(0xFF22D8F0)),

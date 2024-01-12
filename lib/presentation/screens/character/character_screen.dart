@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/infrastructure/models/character_model.dart';
+import 'package:rick_and_morty_app/domain/entities/character.dart';
 
 class CharacterScreen extends StatelessWidget {
   final Character character;
@@ -63,8 +63,6 @@ class _CharacterInfoView extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text('Origin: ${character.origin!.name!}'.toUpperCase(),
-              style: textStyle),
         ],
       ),
     );

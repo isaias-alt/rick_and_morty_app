@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/presentation/providers/theme_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/providers.dart';
 
 class AppTheme {
   ThemeData getTheme({required ThemeProvider themeProvider}) {
