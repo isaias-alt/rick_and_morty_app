@@ -28,9 +28,9 @@ class CharacterDataSourceImpl extends CharacterDatasource {
         await http.get(Uri.https(url, '/api/character/', {'name': name}));
     final characterSearchResponse =
         CharacterModel.fromJson(json.decode(result.body));
-    final List<Character> response = characterSearchResponse.results!
+    final List<Character> characters = characterSearchResponse.results!
         .map((search) => CharacterMapper.characterResponseToEntity(search))
         .toList();
-    return response;
+    return characters;
   }
 }

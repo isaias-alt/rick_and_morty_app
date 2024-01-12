@@ -4,20 +4,21 @@ import 'package:rick_and_morty_app/infrastructure/datasources/character_datasour
 import 'package:rick_and_morty_app/infrastructure/repositories/character_repository_impl.dart';
 
 class CharacterProvider with ChangeNotifier {
-  final characters = [];
-  final characterDatasource = CharacterDataSourceImpl();
+  final List<Character> characters = [];
+  final CharacterDataSourceImpl characterDatasource = CharacterDataSourceImpl();
 
   Future<void> getCharacters(int page) async {
-    final characterRepositoryImpl =
-        CharacterRepositoryImpl(characterDatasource);
-    characters.add(characterRepositoryImpl.getCharacters(page: page));
+    final characterRepository = CharacterRepositoryImpl(characterDatasource);
+    final characterList = await characterRepository.getCharacters(page: page);
+    characters.addAll(characterList);
     notifyListeners();
   }
 
   Future<List<Character>> getCharacter(String name) async {
-    final characterRepositoryImpl =
-        CharacterRepositoryImpl(characterDatasource);
-    final character = characterRepositoryImpl.getCharacter(name);
-    return character;
+    final characterRepository = CharacterRepositoryImpl(characterDatasource);
+    final characterList = await characterRepository.getCharacter(name);
+    characters.clear();
+    characters.addAll(characterList);
+    return characters;
   }
 }
