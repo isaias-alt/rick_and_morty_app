@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:rick_and_morty_app/presentation/providers/providers.dart';
 
 class CharacterCard extends StatelessWidget {
+  final ScrollController scrollController;
+  final bool isLoading;
+
   const CharacterCard({
     super.key,
     required this.scrollController,
     required this.isLoading,
-    required this.characterProvider,
   });
-
-  final ScrollController scrollController;
-  final bool isLoading;
-  final CharacterProvider characterProvider;
 
   @override
   Widget build(BuildContext context) {
+    final characterProvider = context.watch<CharacterProvider>();
+
     return ListView.builder(
       controller: scrollController,
       itemCount: isLoading
@@ -65,9 +66,13 @@ class CharacterCard extends StatelessWidget {
           );
         } else {
           return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              child: Center(
-                  child: CircularProgressIndicator(color: Color(0xFF22D8F0))));
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Center(
+              child: CircularProgressIndicator(
+                color: Color(0xFF22D8F0),
+              ),
+            ),
+          );
         }
       },
     );

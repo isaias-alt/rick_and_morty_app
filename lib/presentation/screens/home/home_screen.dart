@@ -65,7 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               : _CharacterView(
-                  characterProvider: characterProvider,
                   scrollController: scrollController,
                   isLoading: isLoading,
                 )),
@@ -79,11 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _CharacterView extends StatelessWidget {
-  final CharacterProvider characterProvider;
   final ScrollController scrollController;
   final bool isLoading;
   const _CharacterView({
-    required this.characterProvider,
     required this.scrollController,
     required this.isLoading,
   });
@@ -93,7 +90,6 @@ class _CharacterView extends StatelessWidget {
     return CharacterCard(
       scrollController: scrollController,
       isLoading: isLoading,
-      characterProvider: characterProvider,
     );
   }
 }

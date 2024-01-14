@@ -13,8 +13,11 @@ class CharacterModel {
         info: json["info"] == null ? null : Info.fromJson(json["info"]),
         results: json["results"] == null
             ? []
-            : List<CharacterResponseModel>.from(json["results"]!
-                .map((x) => CharacterResponseModel.fromJson(x))),
+            : List<CharacterResponseModel>.from(
+                json["results"]!.map(
+                  (x) => CharacterResponseModel.fromJson(x),
+                ),
+              ),
       );
 }
 
