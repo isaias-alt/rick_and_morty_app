@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rick_and_morty_app/presentation/providers/character/character_provider.dart';
-import 'package:rick_and_morty_app/presentation/providers/theme/theme_provider.dart';
+import 'package:rick_and_morty_app/presentation/providers/providers.dart';
 import 'package:rick_and_morty_app/presentation/widgets/character_card.dart';
 import 'package:rick_and_morty_app/presentation/widgets/search_delegate.dart';
 
